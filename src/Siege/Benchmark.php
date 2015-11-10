@@ -43,7 +43,7 @@ class Benchmark
     /**
      * SiegeBench constructor.
      *
-     * @param array      $targets
+     * @param array $targets
      * @param array $options
      */
     public function __construct($targets, $options = array())
@@ -55,6 +55,9 @@ class Benchmark
         passthru("mkdir -p " . $this->log_path);
     }
 
+    /**
+     * run already defined tests.
+     */
     public function run()
     {
         foreach ($this->targets as $name => $url) {
@@ -72,11 +75,21 @@ class Benchmark
         }
     }
 
-    protected function config($options = array())
+    /**
+     * @description update configuration
+     *
+     * @param array $options
+     */
+    protected function config(array $options = array())
     {
         $this->options = array_merge($this->options, $options);
     }
 
+    /**
+     * @description create configuration file from defined configuration options
+     *
+     * @return string
+     */
     protected function configFile()
     {
         $text = '';
@@ -88,6 +101,9 @@ class Benchmark
         return $this->config_file;
     }
 
+    /**
+     * export report
+     */
     public function report()
     {
         $reporter = new Report($this->log_path);

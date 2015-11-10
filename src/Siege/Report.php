@@ -46,6 +46,9 @@ class Report
         $this->files = glob($this->log_path . "/*.log");
     }
 
+    /**
+     * display report
+     */
     public function display()
     {
         /**
@@ -84,6 +87,9 @@ class Report
         $this->output();
     }
 
+    /**
+     * prepare and display line by line report result.
+     */
     protected function output()
     {
         foreach ($this->report as $key => $val) {
@@ -92,6 +98,13 @@ class Report
         }
     }
 
+    /**
+     * @description Read test report file.
+     *
+     * @param string $file
+     *
+     * @return array
+     */
     public function readFile($file)
     {
         $list = array();
@@ -111,6 +124,9 @@ class Report
         return $list;
     }
 
+    /**
+     * prepare and display table header
+     */
     protected function header()
     {
         $header = array(
