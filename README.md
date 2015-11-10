@@ -1,6 +1,9 @@
 # SiegeBenchmark
 to run siege benchmark easily.
 
+## Introduction
+This test suite is based on [a work by Fabien Potencier](https://github.com/fabpot/framework-benchs).
+
 ## Run
 
 ```php
