@@ -1,0 +1,25 @@
+{
+  "name": "zekiunal/siege-benchmark",
+  "description": "to run siege benchmark easily.",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Zeki Unal",
+      "email": "zekiunal@gmail.com"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "src/Siege"
+    ]
+  },
+  "autoload-dev": {
+    "classmap": [
+      "test/src/Siege"
+    ],
+    "files": [
+      "test/src/bootstrap.php"
+    ]
+  }
+}

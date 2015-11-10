@@ -1,2 +1,2 @@
 # SiegeBenchmark
-to run siege benchmark easly.
+to run siege benchmark easily.
