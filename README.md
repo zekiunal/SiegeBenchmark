@@ -8,10 +8,22 @@ This test suite is based on [a work by Fabien Potencier](https://github.com/fabp
 
 ```php
 <?php
+/**
+ * include siege benchmark classes.
+ */
+include_once 'src/Siege/Benchmark.php';
+include_once 'src/Siege/Report.php';
+
+/**
+ * php settings
+ */
 ini_set('error_reporting', E_ALL | E_STRICT);
 ini_set('display_errors', true);
 date_default_timezone_set('Europe/Istanbul');
 
+/**
+ * define targets.
+ */
 $targets = array(
     'Worldwide'       => 'http://www.google.com.tr',
     'AscensionIsland' => 'http://www.google.ac',
@@ -20,6 +32,9 @@ $targets = array(
     'Turkey'          => 'http://www.google.com.tr',
 );
 
+/**
+ * define test options.
+ */
 $options = array(
     'concurrent' => '10',
     'time'       => '10s',
