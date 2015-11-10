@@ -51,7 +51,7 @@ class Report
     public function __construct($log_path, $repeat = 3)
     {
         $this->log_path = $log_path;
-        $this->report = $repeat;
+        $this->repeat = $repeat;
         $this->files = glob($this->log_path . "/*.log");
     }
 
