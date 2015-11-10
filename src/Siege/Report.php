@@ -65,7 +65,9 @@ class Report
             array_shift($data);
 
             foreach ($data as $key => $val) {
-                // save the req/sec
+                /**
+                 * req/sec
+                 */
                 $i = $key + 1;
                 $this->report[$name][(string)$i] = sprintf($format, $val[5]);
             }
@@ -73,7 +75,6 @@ class Report
             $avg = array_sum($this->report[$name]) / (count($this->report[$name]) - 2); // -2 for rel, avg
             $this->report[$name]['avg'] = sprintf($format, $avg);
 
-            // if this is the symfony1 report, save the comparison value
             if ($name == 'dev') {
                 $this->comparison = $avg;
             }
