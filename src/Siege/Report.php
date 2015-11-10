@@ -122,7 +122,7 @@ class Report
             '       4',
             '       5'
         );
-        echo str_pad('framework', self::PADDING) . " | " . implode(" | ", $header) . "\n";
+        echo str_pad('platform', self::PADDING) . " | " . implode(" | ", $header) . "\n";
 
         $line = array(
             '--------',
