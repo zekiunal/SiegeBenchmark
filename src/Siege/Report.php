@@ -143,23 +143,23 @@ class Report
             '     avg'
         );
 
-        for ($i = 1; $i < $this->repeat; $i++) {
+        $pass =array();
+        for ($i = 1; $i <= $this->repeat; $i++) {
             $pass[] = '       ' . $i;
         }
-
         $header = array_merge($header, $pass);
-
         echo str_pad('platform', self::PADDING) . " | " . implode(" | ", $header) . "\n";
 
         $line = array(
             '--------',
-            '--------',
-            '--------',
-            '--------',
-            '--------',
-            '--------',
             '--------'
         );
+        $pass =array();
+        for ($i = 1; $i <= $this->repeat; $i++) {
+            $pass[] = '--------';
+        }
+        $line = array_merge($line, $pass);
         echo str_pad('', self::PADDING, '-') . " | " . implode(" | ", $line) . "\n";
+
     }
 }

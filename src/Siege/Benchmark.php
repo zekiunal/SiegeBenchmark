@@ -52,12 +52,17 @@ class Benchmark
      *
      * @param array $targets
      * @param array $options
-     * @param int   $repeat
+     * @param int   $repeat can not be more than 9
      */
     public function __construct($targets, $options = array(), $repeat = 3)
     {
         $this->targets = $targets;
         $this->options = array_merge($this->options, $options);
+
+        if ($repeat >= 10) {
+            $repeat = 9;
+        }
+
         $this->repeat = $repeat;
         $time = date("Y-m-d-H:i:s");
         $this->log_path = "./log/" . $time;
