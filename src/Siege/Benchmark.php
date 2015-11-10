@@ -23,6 +23,13 @@ class Benchmark
     protected $log_path;
 
     /**
+     * @description test repeat count.
+     *
+     * @var int
+     */
+    protected $repeat;
+
+    /**
      * @var string
      */
     protected $config_file = "/tmp/.siege-config";
@@ -45,11 +52,13 @@ class Benchmark
      *
      * @param array $targets
      * @param array $options
+     * @param int   $repeat
      */
-    public function __construct($targets, $options = array())
+    public function __construct($targets, $options = array(), $repeat = 3)
     {
         $this->targets = $targets;
         $this->options = array_merge($this->options, $options);
+        $this->repeat = $repeat;
         $time = date("Y-m-d-H:i:s");
         $this->log_path = "./log/" . $time;
         passthru("mkdir -p " . $this->log_path);
@@ -67,7 +76,7 @@ class Benchmark
 
             passthru("curl " . $url);
 
-            for ($i = 1; $i <= 3; $i++) {
+            for ($i = 1; $i <= $this->repeat; $i++) {
                 echo $name . ": pass " . $i . "\n";
                 passthru("siege --rc=" . $this->configFile() . ' ' . $url);
                 echo "\n";
@@ -106,7 +115,7 @@ class Benchmark
      */
     public function report()
     {
-        $reporter = new Report($this->log_path);
+        $reporter = new Report($this->log_path, $this->repeat);
         $reporter->display();
     }
 }

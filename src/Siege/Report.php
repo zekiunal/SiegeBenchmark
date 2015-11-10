@@ -36,13 +36,22 @@ class Report
     protected $comparison = 99999999;
 
     /**
-     * SiegeReport constructor.
+     * @description test repeat count.
+     *
+     * @var int
+     */
+    protected $repeat;
+
+    /**
+     * Report constructor.
      *
      * @param string $log_path
+     * @param int    $repeat
      */
-    public function __construct($log_path)
+    public function __construct($log_path, $repeat = 3)
     {
         $this->log_path = $log_path;
+        $this->report = $repeat;
         $this->files = glob($this->log_path . "/*.log");
     }
 
@@ -131,13 +140,15 @@ class Report
     {
         $header = array(
             '     rel',
-            '     avg',
-            '       1',
-            '       2',
-            '       3',
-            '       4',
-            '       5'
+            '     avg'
         );
+
+        for ($i = 1; $i < $this->repeat; $i++) {
+            $pass[] = '       ' . $i;
+        }
+
+        $header = array_merge($header, $pass);
+
         echo str_pad('platform', self::PADDING) . " | " . implode(" | ", $header) . "\n";
 
         $line = array(
