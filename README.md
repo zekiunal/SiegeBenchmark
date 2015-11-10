@@ -22,7 +22,7 @@ $options = array(
     'time'       => '10s',
 );
 
-$bench = new SiegeBench($targets, $options);
+$bench = new \Siege\Benchmark($targets, $options);
 $bench->run();
 $bench->report();
 
